@@ -88,7 +88,8 @@ services:
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-bookuser}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-bookpass}
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
-      GOOGLE_VISION_API_KEY: ${GOOGLE_VISION_API_KEY:-}
+      TESSDATA_PATH: /usr/share/tessdata
+      TESSDATA_LANG: eng+nld
     volumes:
       # Tijdelijke opslag voor geüploade afbeeldingen
       - upload_tmp:/tmp/book-scanner-uploads

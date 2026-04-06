@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Client voor de Open Library Search API.
- * Documentatie: https://openlibrary.org/dev/docs/api#anchor_searchapi
+ * Client for the Open Library Search API.
+ * Documentation: https://openlibrary.org/dev/docs/api#anchor_searchapi
  *
- * Leerpunt: We gebruiken WebClient (reactief) in plaats van RestTemplate (blocking).
- * Voor een simpele synchrone call gebruiken we .block() om het te bridgen naar
- * de imperatieve code. In een volledig reactieve applicatie zou je hier Mono teruggeven.
+ * Learning note: We use WebClient (reactive) instead of RestTemplate (blocking).
+ * For a simple synchronous call we use .block() to bridge into
+ * imperative code. In a fully reactive application you would return Mono instead.
  *
- * De API retourneert de top-N resultaten. We nemen de eerste 3 als kandidaten
- * zodat de gebruiker kan kiezen welk boek correct is.
+ * The API returns the top-N results. We take the first 3 as candidates
+ * so the user can choose which book is correct.
  */
 @Component
 @RequiredArgsConstructor

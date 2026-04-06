@@ -8,14 +8,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Registry voor actieve SSE verbindingen, geïndexeerd op uploadId.
+ * Registry for active SSE connections, indexed by uploadId.
  *
- * Leerpunt: ConcurrentHashMap is thread-safe. SSE emitters worden aangemaakt
- * door de HTTP request thread en beschreven door de Kafka consumer thread.
- * Zonder thread-safety zouden we race conditions krijgen.
+ * Learning note: ConcurrentHashMap is thread-safe. SSE emitters are created
+ * by the HTTP request thread and written to by the Kafka consumer thread.
+ * Without thread-safety we would have race conditions.
  *
- * In productie zou je dit vervangen door een gedistribueerde oplossing
- * (bijv. Redis pub/sub) zodat het werkt over meerdere backend instances.
+ * In production you would replace this with a distributed solution
+ * (e.g. Redis pub/sub) so it works across multiple backend instances.
  */
 @Component
 @Slf4j

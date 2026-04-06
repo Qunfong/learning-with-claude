@@ -11,8 +11,12 @@ COPY src ./src
 RUN mvn clean package -DskipTests -B
 
 # ─── Stage 2: Runtime ─────────────────────────────────────────────────────────
+# Alpine heeft een klein Tesseract pakket — perfect voor onze use case
 FROM eclipse-temurin:25-jre-alpine
 WORKDIR /app
+
+# Installeer Tesseract + taaldata (Engels en Nederlands)
+RUN apk add --no-cache tesseract-ocr tesseract-ocr-data-eng tesseract-ocr-data-nld
 
 # Maak upload directory aan
 RUN mkdir -p /tmp/book-scanner-uploads

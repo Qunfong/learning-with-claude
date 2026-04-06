@@ -124,12 +124,18 @@ jobs:
           </toolchains>
           XML
 
+      - name: Install Tesseract
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-nld
+
       - name: Build and test
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/bookscanner
           SPRING_DATASOURCE_USERNAME: bookscanner
           SPRING_DATASOURCE_PASSWORD: bookscanner
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          TESSDATA_PATH: /usr/share/tessdata
+          TESSDATA_LANG: eng+nld
         run: mvn --batch-mode --no-transfer-progress verify
 
       - name: Upload test results

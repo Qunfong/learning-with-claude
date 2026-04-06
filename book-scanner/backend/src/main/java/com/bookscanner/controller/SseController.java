@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
- * SSE endpoint waarmee de frontend realtime updates ontvangt
- * over de verwerking van een geüploade afbeelding.
+ * SSE endpoint through which the frontend receives real-time updates
+ * about the processing of an uploaded image.
  *
- * Gebruik:
+ * Usage:
  *   GET /api/sse/status/{uploadId}
  *   Accept: text/event-stream
  *
- * Leerpunt: SseEmitter houdt de HTTP verbinding open. Spring MVC behandelt
- * dit asynchroon via een apart thread pool. De timeout van 3 minuten is
- * ruim genoeg voor de verwerkingstijd, maar voorkomt dat verbindingen
- * eeuwig open blijven als de client verdwijnt.
+ * Learning note: SseEmitter keeps the HTTP connection open. Spring MVC handles
+ * this asynchronously via a separate thread pool. The 3-minute timeout is
+ * generous enough for the processing time, but prevents connections from
+ * staying open indefinitely if the client disappears.
  */
 @RestController
 @RequestMapping("/api/sse")

@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * REST endpoint voor het uploaden van boekafbeeldingen.
+ * REST endpoint for uploading book images.
  *
  * POST /api/images/upload
- *   - Accepteert multipart/form-data met veld 'file'
- *   - Valideert bestandsgrootte (max 10MB via Spring config) en type (JPEG/PNG)
- *   - Retourneert 202 Accepted + uploadId waarmee SSE gevolgd kan worden
+ *   - Accepts multipart/form-data with field 'file'
+ *   - Validates file size (max 10MB via Spring config) and type (JPEG/PNG)
+ *   - Returns 202 Accepted + uploadId that can be used to follow progress via SSE
  */
 @RestController
 @RequestMapping("/api/images")

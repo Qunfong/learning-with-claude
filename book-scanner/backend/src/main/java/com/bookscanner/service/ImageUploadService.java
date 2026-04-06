@@ -39,7 +39,7 @@ public class ImageUploadService {
         Path filePath = uploadDir.resolve(uploadId + extension);
         file.transferTo(filePath.toFile());
 
-        log.info("Afbeelding opgeslagen: {} (uploadId: {})", filePath, uploadId);
+        log.info("Image saved: {} (uploadId: {})", filePath, uploadId);
 
         ImageSubmittedEvent event = new ImageSubmittedEvent(
                 uploadId,
@@ -49,7 +49,7 @@ public class ImageUploadService {
         String payload = objectMapper.writeValueAsString(event);
         kafkaTemplate.send(imageSubmittedTopic, uploadId, payload);
 
-        log.info("Event gepubliceerd op topic '{}' voor uploadId: {}", imageSubmittedTopic, uploadId);
+        log.info("Event published to topic '{}' for uploadId: {}", imageSubmittedTopic, uploadId);
 
         return uploadId;
     }

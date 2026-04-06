@@ -52,11 +52,11 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Google Cloud Vision API -->
+        <!-- Tesseract OCR (gratis, lokaal, geen API key) -->
         <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>google-cloud-vision</artifactId>
-            <version>3.86.0</version>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>5.13.0</version>
         </dependency>
 
         <!-- HTTP client voor Open Library API -->
@@ -103,6 +103,20 @@
                             <vendor>openjdk</vendor>
                         </jdk>
                     </toolchains>
+                </configuration>
+            </plugin>
+
+            <!-- Expliciete Lombok annotation processor — vereist bij toolchain gebruik -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 

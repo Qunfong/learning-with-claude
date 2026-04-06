@@ -1,6 +1,6 @@
 package com.bookscanner.service;
 
-import com.bookscanner.client.GoogleVisionClient;
+import com.bookscanner.client.TesseractOcrClient;
 import com.bookscanner.client.OpenLibraryClient;
 import com.bookscanner.dto.BookRecognizedEvent;
 import com.bookscanner.dto.BookRecognizedEvent.BookCandidate;
@@ -21,24 +21,24 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Hart van de streaming pipeline.
+ * Core of the streaming pipeline.
  *
- * Stroom:
+ * Flow:
  *   [Kafka: image.submitted]
- *      → OCR via Google Vision API
- *      → Zoek boek op via Open Library API
- *      → Publiceer resultaat op [Kafka: book.recognized]
+ *      → OCR via Tesseract
+ *      → Look up book via Open Library API
+ *      → Publish result to [Kafka: book.recognized]
  *
- * Leerpunt: @KafkaListener maakt van deze methode een message-driven consumer.
- * Spring Kafka start automatisch een thread die wacht op berichten.
- * containerFactory verwijst naar de bean in KafkaConsumerConfig.
+ * Learning note: @KafkaListener turns this method into a message-driven consumer.
+ * Spring Kafka automatically starts a thread that waits for incoming messages.
+ * containerFactory refers to the bean defined in KafkaConsumerConfig.
  */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class ImageProcessingService {
 
-    private final GoogleVisionClient visionClient;
+    private final TesseractOcrClient visionClient;
     private final OpenLibraryClient openLibraryClient;
     private final KafkaTemplate<String, String> bookRecognizedKafkaTemplate;
     private final ObjectMapper objectMapper;
@@ -55,44 +55,40 @@ public class ImageProcessingService {
         try {
             event = objectMapper.readValue(payload, ImageSubmittedEvent.class);
         } catch (Exception e) {
-            log.error("Kon ImageSubmittedEvent niet parsen: {}", payload, e);
+            log.error("Failed to parse ImageSubmittedEvent: {}", payload, e);
             return;
         }
         String uploadId = event.getUploadId();
-        log.info("Verwerking gestart voor uploadId: {}", uploadId);
+        log.info("Processing started for uploadId: {}", uploadId);
 
-        // Stap 1: OCR
+        // Step 1: OCR
         Optional<String> detectedText;
         try {
             Path imagePath = Paths.get(event.getFilePath());
             detectedText = visionClient.detectText(imagePath);
-        } catch (IllegalStateException e) {
-            log.error("Vision API niet geconfigureerd: {}", e.getMessage());
-            publishFailed(uploadId, ErrorCode.OCR_SERVICE_ERROR);
-            return;
         } catch (Exception e) {
-            log.error("OCR fout voor uploadId {}: {}", uploadId, e.getMessage(), e);
+            log.error("OCR error for uploadId {}: {}", uploadId, e.getMessage(), e);
             publishFailed(uploadId, ErrorCode.OCR_SERVICE_ERROR);
             return;
         }
 
         if (detectedText.isEmpty()) {
-            log.info("Geen tekst gevonden op afbeelding voor uploadId: {}", uploadId);
+            log.info("No text detected in image for uploadId: {}", uploadId);
             publishFailed(uploadId, ErrorCode.NO_TEXT_DETECTED);
             return;
         }
 
-        // Stap 2: Zoek boek op (top 3 kandidaten)
+        // Step 2: Look up book (top 3 candidates)
         String query = extractSearchQuery(detectedText.get());
         List<BookCandidate> candidates = openLibraryClient.search(query);
 
         if (candidates.isEmpty()) {
-            log.info("Geen boek gevonden voor query '{}' (uploadId: {})", query, uploadId);
+            log.info("No book found for query '{}' (uploadId: {})", query, uploadId);
             publishFailed(uploadId, ErrorCode.BOOK_NOT_FOUND);
             return;
         }
 
-        // Stap 3: Publiceer resultaat
+        // Step 3: Publish result
         BookRecognizedEvent resultEvent = BookRecognizedEvent.builder()
                 .uploadId(uploadId)
                 .status(Status.RECOGNIZED)
@@ -103,15 +99,15 @@ public class ImageProcessingService {
             bookRecognizedKafkaTemplate.send(bookRecognizedTopic, uploadId,
                     objectMapper.writeValueAsString(resultEvent));
         } catch (Exception e) {
-            log.error("Kon resultaat niet publiceren voor uploadId: {}", uploadId, e);
+            log.error("Failed to publish result for uploadId: {}", uploadId, e);
         }
-        log.info("Boek herkend voor uploadId: {}, {} kandidaat(en)", uploadId, candidates.size());
+        log.info("Book recognized for uploadId: {}, {} candidate(s)", uploadId, candidates.size());
     }
 
     /**
-     * Extraheert een zoekopdracht uit de OCR tekst.
-     * Neemt de eerste 100 tekens om de API query beknopt te houden.
-     * In een productie-implementatie zou je NLP gebruiken voor betere extractie.
+     * Extracts a search query from the OCR text.
+     * Takes the first 100 characters to keep the API query concise.
+     * In a production implementation you would use NLP for better extraction.
      */
     private String extractSearchQuery(String ocrText) {
         String cleaned = ocrText.replaceAll("[\\n\\r]+", " ").trim();
@@ -128,7 +124,7 @@ public class ImageProcessingService {
             bookRecognizedKafkaTemplate.send(bookRecognizedTopic, uploadId,
                     objectMapper.writeValueAsString(failedEvent));
         } catch (Exception e) {
-            log.error("Kon failed event niet publiceren voor uploadId: {}", uploadId, e);
+            log.error("Failed to publish failed event for uploadId: {}", uploadId, e);
         }
     }
 }

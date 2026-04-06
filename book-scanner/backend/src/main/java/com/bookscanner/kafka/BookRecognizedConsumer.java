@@ -12,8 +12,8 @@ import tools.jackson.databind.ObjectMapper;
 import java.io.IOException;
 
 /**
- * Consumeert events van het 'book.recognized' topic en stuurt ze
- * door naar de wachtende SSE verbinding van de frontend.
+ * Consumes events from the 'book.recognized' topic and forwards them
+ * to the waiting SSE connection of the frontend.
  */
 @Component
 @RequiredArgsConstructor

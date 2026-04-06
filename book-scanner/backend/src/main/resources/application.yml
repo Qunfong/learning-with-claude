@@ -47,9 +47,9 @@ server:
 
 # ─── Applicatie-specifieke configuratie ──────────────────────────────────────
 app:
-  google:
-    vision:
-      api-key: ${GOOGLE_VISION_API_KEY:}
+  tesseract:
+    data-path: ${TESSDATA_PATH:/usr/share/tessdata}
+    language: ${TESSDATA_LANG:eng+nld}
   upload:
     tmp-dir: ${UPLOAD_TMP_DIR:/tmp/book-scanner-uploads}
   kafka:
