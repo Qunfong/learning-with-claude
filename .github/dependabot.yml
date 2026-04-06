@@ -1,0 +1,30 @@
+version: 2
+
+updates:
+  # GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+
+  # Maven (demo app)
+  - package-ecosystem: maven
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+
+  # Maven (book-scanner backend)
+  - package-ecosystem: maven
+    directory: /book-scanner/backend
+    schedule:
+      interval: weekly
+      day: monday
+
+  # npm (book-scanner frontend)
+  - package-ecosystem: npm
+    directory: /book-scanner/frontend
+    schedule:
+      interval: weekly
+      day: monday
