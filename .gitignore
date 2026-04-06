@@ -4,5 +4,5 @@ target/
 *.iml
 *.log
 .claude/
-src/main/resources/application.properties
+auth-server/src/main/resources/application.properties
 book-scanner/backend/src/main/resources/application.properties

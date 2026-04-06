@@ -7,10 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  # ── Job 1: Demo app (Spring Boot 4.1 M4, Java 21) ──────────────────────────
+  # ── Job 1: Auth server / demo app (Spring Boot 4.1 M4, Java 21) ───────────
   build-demo-app:
-    name: Demo App — Build & Test
+    name: Auth Server — Build & Test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: auth-server
 
     steps:
       - uses: actions/checkout@v4
@@ -68,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: demo-app-test-results
-          path: target/surefire-reports/
+          path: auth-server/target/surefire-reports/
 
   # ── Job 2: Book-scanner frontend (Angular 21, Node 22) ─────────────────────
   build-frontend:

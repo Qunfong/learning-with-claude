@@ -99,7 +99,12 @@ public class ImageProcessingService {
                 .candidates(candidates)
                 .build();
 
-        bookRecognizedKafkaTemplate.send(bookRecognizedTopic, uploadId, resultEvent);
+        try {
+            bookRecognizedKafkaTemplate.send(bookRecognizedTopic, uploadId,
+                    objectMapper.writeValueAsString(resultEvent));
+        } catch (Exception e) {
+            log.error("Kon resultaat niet publiceren voor uploadId: {}", uploadId, e);
+        }
         log.info("Boek herkend voor uploadId: {}, {} kandidaat(en)", uploadId, candidates.size());
     }
 
@@ -119,6 +124,11 @@ public class ImageProcessingService {
                 .status(Status.FAILED)
                 .errorCode(errorCode)
                 .build();
-        bookRecognizedKafkaTemplate.send(bookRecognizedTopic, uploadId, failedEvent);
+        try {
+            bookRecognizedKafkaTemplate.send(bookRecognizedTopic, uploadId,
+                    objectMapper.writeValueAsString(failedEvent));
+        } catch (Exception e) {
+            log.error("Kon failed event niet publiceren voor uploadId: {}", uploadId, e);
+        }
     }
 }
