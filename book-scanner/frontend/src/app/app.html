@@ -1,0 +1,11 @@
+<nav class="navbar">
+  <a routerLink="/" class="nav-brand">📚 Book Scanner</a>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Bibliotheek</a>
+    <a routerLink="/scan" routerLinkActive="active">Scannen</a>
+  </div>
+</nav>
+
+<main>
+  <router-outlet />
+</main>

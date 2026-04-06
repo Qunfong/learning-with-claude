@@ -1,0 +1,8 @@
+target/
+.idea/
+*.class
+*.iml
+*.log
+.claude/
+src/main/resources/application.properties
+book-scanner/backend/src/main/resources/application.properties

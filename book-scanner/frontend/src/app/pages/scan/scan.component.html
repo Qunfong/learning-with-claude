@@ -1,0 +1,91 @@
+<div class="scan-page">
+  <h1>Boek scannen</h1>
+
+  <!-- ─── IDLE: upload of camera ──────────────────────────────────────────── -->
+  @if (state === 'idle' && !isCameraActive) {
+    <div class="upload-area">
+      <button class="btn btn-primary" (click)="openCamera()">
+        📷 Camera gebruiken
+      </button>
+
+      <span class="divider">of</span>
+
+      <label class="btn btn-secondary" for="fileInput">
+        📁 Foto uploaden
+      </label>
+      <input
+        #fileInput
+        id="fileInput"
+        type="file"
+        accept="image/jpeg,image/png"
+        style="display:none"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+  }
+
+  <!-- ─── Camera actief ──────────────────────────────────────────────────── -->
+  @if (isCameraActive) {
+    <div class="camera-area">
+      <video #videoEl autoplay playsinline></video>
+      <div class="camera-actions">
+        <button class="btn btn-primary" (click)="capturePhoto()">📸 Foto maken</button>
+        <button class="btn btn-ghost" (click)="stopCamera()">Annuleren</button>
+      </div>
+    </div>
+  }
+
+  <!-- ─── Uploading ─────────────────────────────────────────────────────── -->
+  @if (state === 'uploading') {
+    <div class="status-box">
+      <div class="spinner"></div>
+      <p>Afbeelding uploaden...</p>
+    </div>
+  }
+
+  <!-- ─── Processing ────────────────────────────────────────────────────── -->
+  @if (state === 'processing') {
+    <div class="status-box">
+      <div class="spinner"></div>
+      <p>Boek herkennen via AI... dit duurt een paar seconden.</p>
+    </div>
+  }
+
+  <!-- ─── RECOGNIZED: top-3 kandidaten ─────────────────────────────────── -->
+  @if (state === 'recognized') {
+    <div class="candidates">
+      <h2>Gevonden boeken — kies het juiste</h2>
+
+      @for (candidate of candidates; track candidate.isbn ?? candidate.title) {
+        <div class="candidate-card">
+          @if (candidate.coverUrl) {
+            <img [src]="candidate.coverUrl" alt="Cover" class="cover" />
+          } @else {
+            <div class="cover-placeholder">📚</div>
+          }
+          <div class="candidate-info">
+            <h3>{{ candidate.title }}</h3>
+            @if (candidate.author) { <p class="author">{{ candidate.author }}</p> }
+            @if (candidate.isbn) { <p class="isbn">ISBN: {{ candidate.isbn }}</p> }
+            @if (candidate.description) {
+              <p class="description">{{ candidate.description }}</p>
+            }
+            <button class="btn btn-primary" (click)="saveCandidate(candidate)">
+              Opslaan in bibliotheek
+            </button>
+          </div>
+        </div>
+      }
+
+      <button class="btn btn-ghost" (click)="dismiss()">Negeren</button>
+    </div>
+  }
+
+  <!-- ─── FAILED ────────────────────────────────────────────────────────── -->
+  @if (state === 'failed') {
+    <div class="error-box">
+      <p class="error-message">⚠️ {{ errorMessage }}</p>
+      <button class="btn btn-secondary" (click)="retry()">Opnieuw proberen</button>
+    </div>
+  }
+</div>

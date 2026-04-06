@@ -1,0 +1,42 @@
+<div class="detail-page">
+  @if (loading) {
+    <p>Laden...</p>
+  } @else if (!book) {
+    <p>Boek niet gevonden.</p>
+    <a routerLink="/" class="btn btn-secondary">Terug naar bibliotheek</a>
+  } @else {
+    <a routerLink="/" class="back-link">← Terug naar bibliotheek</a>
+
+    <div class="detail-layout">
+      <div class="cover-side">
+        @if (book.coverUrl) {
+          <img [src]="book.coverUrl" [alt]="book.title" class="cover" />
+        } @else {
+          <div class="cover-placeholder">📚</div>
+        }
+      </div>
+
+      <div class="info-side">
+        <h1>{{ book.title }}</h1>
+        @if (book.author) { <p class="author">{{ book.author }}</p> }
+        @if (book.isbn) { <p class="isbn">ISBN: {{ book.isbn }}</p> }
+        @if (book.description) { <p class="description">{{ book.description }}</p> }
+        <p class="added-at">Toegevoegd op {{ book.addedAt | date: 'dd MMMM yyyy' }}</p>
+
+        @if (!showConfirm) {
+          <button class="btn btn-danger" (click)="showConfirm = true">
+            Verwijderen uit bibliotheek
+          </button>
+        } @else {
+          <div class="confirm-dialog">
+            <p>Weet je zeker dat je dit boek wil verwijderen?</p>
+            <div class="confirm-actions">
+              <button class="btn btn-danger" (click)="confirmDelete()">Ja, verwijderen</button>
+              <button class="btn btn-ghost" (click)="showConfirm = false">Annuleren</button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

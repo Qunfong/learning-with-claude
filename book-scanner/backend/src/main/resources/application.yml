@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: book-scanner-backend
+
+  # ─── DataSource ───────────────────────────────────────────────────────────────
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/bookscanner}
+    username: ${SPRING_DATASOURCE_USERNAME:bookuser}
+    password: ${SPRING_DATASOURCE_PASSWORD:bookpass}
+    driver-class-name: org.postgresql.Driver
+
+  # ─── JPA ──────────────────────────────────────────────────────────────────────
+  jpa:
+    hibernate:
+      ddl-auto: update          # 'update' is handig voor development; gebruik Flyway in productie
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        # Hibernate 7 (Spring Boot 4) detecteert het dialect automatisch —
+        # expliciete dialect-instelling is niet meer nodig en veroorzaakt deprecation warnings
+
+  # ─── Kafka ────────────────────────────────────────────────────────────────────
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: false
+    consumer:
+      group-id: book-scanner-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.bookscanner.dto"
+
+  # ─── File upload limieten ─────────────────────────────────────────────────────
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+
+server:
+  port: 8080
+
+# ─── Applicatie-specifieke configuratie ──────────────────────────────────────
+app:
+  google:
+    vision:
+      api-key: ${GOOGLE_VISION_API_KEY:}
+  upload:
+    tmp-dir: ${UPLOAD_TMP_DIR:/tmp/book-scanner-uploads}
+  kafka:
+    topics:
+      image-submitted: image.submitted
+      book-recognized: book.recognized

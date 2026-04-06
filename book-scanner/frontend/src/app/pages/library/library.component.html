@@ -1,0 +1,31 @@
+<div class="library-page">
+  <div class="page-header">
+    <h1>Mijn Bibliotheek</h1>
+    <a routerLink="/scan" class="btn btn-primary">+ Boek scannen</a>
+  </div>
+
+  @if (loading) {
+    <div class="loading">Laden...</div>
+  } @else if (books.length === 0) {
+    <div class="empty-state">
+      <p>📚 Je bibliotheek is nog leeg.</p>
+      <a routerLink="/scan" class="btn btn-primary">Scan je eerste boek</a>
+    </div>
+  } @else {
+    <div class="book-grid">
+      @for (book of books; track book.id) {
+        <a [routerLink]="['/books', book.id]" class="book-card">
+          @if (book.coverUrl) {
+            <img [src]="book.coverUrl" [alt]="book.title" class="cover" />
+          } @else {
+            <div class="cover-placeholder">📚</div>
+          }
+          <div class="book-info">
+            <h3>{{ book.title }}</h3>
+            @if (book.author) { <p class="author">{{ book.author }}</p> }
+          </div>
+        </a>
+      }
+    </div>
+  }
+</div>
