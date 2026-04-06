@@ -26,14 +26,14 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @Slf4j
 public class SseController {
 
-    // 3 minuten timeout — ruim genoeg voor OCR + Open Library lookup
+    // 3 minute timeout — generous enough for OCR + Open Library lookup
     private static final long SSE_TIMEOUT_MS = 3 * 60 * 1000L;
 
     private final SseEmitterRegistry sseEmitterRegistry;
 
     @GetMapping(value = "/status/{uploadId}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public SseEmitter streamStatus(@PathVariable String uploadId) {
-        log.info("SSE verbinding geopend voor uploadId: {}", uploadId);
+        log.info("SSE connection opened for uploadId: {}", uploadId);
 
         SseEmitter emitter = new SseEmitter(SSE_TIMEOUT_MS);
         sseEmitterRegistry.register(uploadId, emitter);

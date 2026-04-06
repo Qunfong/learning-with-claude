@@ -28,7 +28,7 @@ public class SseEmitterRegistry {
         emitter.onCompletion(() -> emitters.remove(uploadId));
         emitter.onTimeout(() -> emitters.remove(uploadId));
         emitter.onError(e -> emitters.remove(uploadId));
-        log.debug("SSE emitter geregistreerd voor uploadId: {}", uploadId);
+        log.debug("SSE emitter registered for uploadId: {}", uploadId);
     }
 
     public SseEmitter get(String uploadId) {

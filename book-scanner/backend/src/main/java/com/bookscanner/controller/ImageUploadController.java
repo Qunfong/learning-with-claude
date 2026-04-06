@@ -38,18 +38,18 @@ public class ImageUploadController {
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file) {
 
-        // Valideer content type
+        // Validate content type
         String contentType = file.getContentType();
         if (contentType == null || !ALLOWED_TYPES.contains(contentType)) {
             return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
-                    .body(Map.of("error", "Alleen JPEG en PNG bestanden zijn toegestaan"));
+                    .body(Map.of("error", "Only JPEG and PNG files are allowed"));
         }
 
-        // Bestandsgrootte wordt al afgehandeld door Spring's multipart limiet (413)
-        // maar we voegen een expliciete check toe voor duidelijkere foutmelding
+        // File size is already handled by Spring's multipart limit (413),
+        // but we add an explicit check for a clearer error message
         if (file.isEmpty()) {
             return ResponseEntity.badRequest()
-                    .body(Map.of("error", "Bestand is leeg"));
+                    .body(Map.of("error", "File is empty"));
         }
 
         try {
@@ -57,12 +57,12 @@ public class ImageUploadController {
             return ResponseEntity.accepted()
                     .body(Map.of(
                             "uploadId", uploadId,
-                            "message", "Afbeelding ontvangen, verwerking gestart"
+                            "message", "Image received, processing started"
                     ));
         } catch (IOException e) {
-            log.error("Fout bij opslaan van afbeelding", e);
+            log.error("Error saving image", e);
             return ResponseEntity.internalServerError()
-                    .body(Map.of("error", "Kon afbeelding niet verwerken"));
+                    .body(Map.of("error", "Failed to process image"));
         }
     }
 }

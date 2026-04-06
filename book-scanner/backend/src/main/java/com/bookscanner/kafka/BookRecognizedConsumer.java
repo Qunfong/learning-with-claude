@@ -32,17 +32,17 @@ public class BookRecognizedConsumer {
         try {
             event = objectMapper.readValue(payload, BookRecognizedEvent.class);
         } catch (Exception e) {
-            log.error("Kon BookRecognizedEvent niet parsen: {}", payload, e);
+            log.error("Failed to parse BookRecognizedEvent: {}", payload, e);
             return;
         }
 
         String uploadId = event.getUploadId();
-        log.info("BookRecognized event ontvangen voor uploadId: {}, status: {}",
+        log.info("BookRecognized event received for uploadId: {}, status: {}",
                 uploadId, event.getStatus());
 
         SseEmitter emitter = sseEmitterRegistry.get(uploadId);
         if (emitter == null) {
-            log.debug("Geen actieve SSE emitter voor uploadId: {}", uploadId);
+            log.debug("No active SSE emitter for uploadId: {}", uploadId);
             return;
         }
 
@@ -56,7 +56,7 @@ public class BookRecognizedConsumer {
                 sseEmitterRegistry.remove(uploadId);
             }
         } catch (IOException e) {
-            log.warn("Kon SSE event niet sturen voor uploadId: {}", uploadId, e);
+            log.warn("Failed to send SSE event for uploadId: {}", uploadId, e);
             sseEmitterRegistry.remove(uploadId);
         }
     }

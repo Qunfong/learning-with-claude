@@ -32,13 +32,13 @@ public class OpenLibraryClient {
     private final WebClient.Builder webClientBuilder;
 
     /**
-     * Zoekt boeken op basis van een zoekopdracht (vrije tekst: titel, auteur of ISBN).
+     * Searches for books based on a query (free text: title, author, or ISBN).
      *
-     * @param query de zoektekst (bijv. afkomstig van OCR)
-     * @return top-3 gevonden boekresultaten, leeg bij geen resultaten
+     * @param query the search text (e.g. coming from OCR)
+     * @return top-3 book results found, empty if no results
      */
     public List<BookCandidate> search(String query) {
-        log.info("Open Library zoekopdracht: '{}'", query);
+        log.info("Open Library search query: '{}'", query);
 
         try {
             JsonNode result = webClientBuilder.baseUrl(BASE_URL)
@@ -70,11 +70,11 @@ public class OpenLibraryClient {
                 candidates.add(candidate);
             }
 
-            log.info("{} kandidaat(en) gevonden voor query '{}'", candidates.size(), query);
+            log.info("{} candidate(s) found for query '{}'", candidates.size(), query);
             return candidates;
 
         } catch (Exception e) {
-            log.error("Fout bij ophalen van Open Library data voor query '{}'", query, e);
+            log.error("Error fetching Open Library data for query '{}'", query, e);
             return List.of();
         }
     }
