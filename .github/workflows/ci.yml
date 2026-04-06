@@ -63,7 +63,6 @@ jobs:
           ACCESS_TOKEN_TTL: 900
           REFRESH_TOKEN_TTL: 2592000
           AUTH_ENFORCE: false
-          DUFFEL_API_KEY: ${{ secrets.DUFFEL_API_KEY }}
         run: mvn --batch-mode --no-transfer-progress verify
 
       - name: Upload test results
