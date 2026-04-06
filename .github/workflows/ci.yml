@@ -72,7 +72,74 @@ jobs:
           name: demo-app-test-results
           path: auth-server/target/surefire-reports/
 
-  # ── Job 2: Book-scanner frontend (Angular 21, Node 22) ─────────────────────
+  # ── Job 2: Book-scanner backend (Spring Boot 4.0.5, Java 25) ──────────────
+  build-backend:
+    name: Book Scanner — Backend Build & Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: book-scanner/backend
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: bookscanner
+          POSTGRES_USER: bookscanner
+          POSTGRES_PASSWORD: bookscanner
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Java 25
+        id: setup-java
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: temurin
+          cache: maven
+
+      - name: Configure Maven toolchains
+        run: |
+          mkdir -p ~/.m2
+          cat > ~/.m2/toolchains.xml <<XML
+          <toolchains>
+            <toolchain>
+              <type>jdk</type>
+              <provides>
+                <version>25</version>
+                <vendor>openjdk</vendor>
+              </provides>
+              <configuration>
+                <jdkHome>${{ steps.setup-java.outputs.path }}</jdkHome>
+              </configuration>
+            </toolchain>
+          </toolchains>
+          XML
+
+      - name: Build and test
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/bookscanner
+          SPRING_DATASOURCE_USERNAME: bookscanner
+          SPRING_DATASOURCE_PASSWORD: bookscanner
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: mvn --batch-mode --no-transfer-progress verify
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: backend-test-results
+          path: book-scanner/backend/target/surefire-reports/
+
+  # ── Job 3: Book-scanner frontend (Angular 21, Node 22) ─────────────────────
   build-frontend:
     name: Book Scanner — Frontend Build
     runs-on: ubuntu-latest
