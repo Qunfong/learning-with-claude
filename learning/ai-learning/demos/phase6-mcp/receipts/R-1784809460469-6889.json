@@ -1,0 +1,28 @@
+{
+  "id" : "R-1784809460469-6889",
+  "timestamp" : "2026-07-23T12:24:20.495512800Z",
+  "items" : [ {
+    "name" : "koffie",
+    "qty" : 3,
+    "unitPrice" : 3.2,
+    "lineTotal" : 9.6
+  }, {
+    "name" : "broodje",
+    "qty" : 1,
+    "unitPrice" : 5.5,
+    "lineTotal" : 5.5
+  }, {
+    "name" : "boek",
+    "qty" : 1,
+    "unitPrice" : 14.99,
+    "lineTotal" : 14.99
+  }, {
+    "name" : "koffie",
+    "qty" : 2,
+    "unitPrice" : 3.2,
+    "lineTotal" : 6.4
+  } ],
+  "subtotal" : 36.49,
+  "vat" : 7.66,
+  "total" : 44.15
+}

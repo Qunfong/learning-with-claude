@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        Standalone fixture module (NOT a submodule of the parent pom.xml; it
+        has its own independent identity, Maven never recurses into it
+        automatically). TestRunner in the parent phase8-autonomous demo
+        invokes `mvn test` against THIS pom via -f, in its own directory.
+
+        Why this exists instead of running against
+        demos/phase1-local-serving/LocalVsHostedDemo.java (the spec's literal
+        demo ticket target): that file exists, but the phase1 module has no
+        src/test and no JUnit dependency, so `mvn test` there is a no-op and
+        gives the pipeline no real pass/fail signal to react to. This fixture
+        reproduces the SAME scenario from the ticket (OllamaClient.complete()
+        needs retry with backoff on 5xx) as a small, self-contained target
+        with a real failing test; see README.md "Deviations from spec" for
+        the full explanation.
+    -->
+    <groupId>learning.phase8.fixture</groupId>
+    <artifactId>fixture</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>5.10.3</junit.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--
+            Added after the first live run: CoderAgent's model (qwen2.5-coder:7b)
+            reliably reaches for SLF4J logging when asked to fix retry logic
+            (arguably correct instinct, matches java-standards skill rule R8,
+             "No System.out in Production Code", which is fed to ReviewerAgent).
+            Without this dependency, that instinct causes a real, organic
+            RETRY x3 -> ESCALATE (see README.md "What actually happened").
+            Added here so a successful CODING/TESTING pass is also
+            demonstrable, not just the escalate path.
+        -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.16</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

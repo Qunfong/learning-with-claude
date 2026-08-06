@@ -1,0 +1,2 @@
+{"ts":"2026-07-21T21:29:28.515495900Z","tool":"get_orders","args":{"status":"open"},"status":"ok","latencyMs":1,"detail":"[{\"id\":1,\"customer\":\"Jansen\",\"amount\":149.5,\"status\":\"open\"},{\"id\":3,\"customer\":\"de Vries\",\"amount\":89.0,\"status\":\"open\"}]"}
+{"ts":"2026-07-21T21:29:28.517567Z","tool":"get_orders","args":{"status":"pending"},"status":"error","latencyMs":0,"detail":"ongeldige status 'pending', moet één van [shipped, cancelled, open] zijn"}
