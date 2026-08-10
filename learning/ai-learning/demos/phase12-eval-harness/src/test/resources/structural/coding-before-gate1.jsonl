@@ -1,0 +1,6 @@
+{"event":"step","ts":"2026-08-01T13:00:00.000000000Z","step":"planning","tokensIn":400,"tokensOut":150,"latencyMs":1800,"cumulativeTokens":550,"stepCostUsd":0.0034}
+{"event":"step","ts":"2026-08-01T13:00:05.000000000Z","step":"coding","tokensIn":700,"tokensOut":400,"latencyMs":19000,"cumulativeTokens":1650,"stepCostUsd":0.0081}
+{"event":"file_written","ts":"2026-08-01T13:00:05.100000000Z","path":"fixture/src/main/java/fixture/FixtureOllamaClient.java","chars":2100}
+{"event":"gate_decision","ts":"2026-08-01T13:00:10.000000000Z","gate":"gate1","approved":true,"feedback":"approved after the fact -- this is the bug this fixture models"}
+{"event":"test_run","ts":"2026-08-01T13:00:13.000000000Z","passed":true,"durationMs":3000}
+{"event":"run_summary","ts":"2026-08-01T13:00:13.100000000Z","outcome":"pr-simulated","durationMs":13100,"steps":2,"tokensIn":1100,"tokensOut":550,"costUsd":0.0115,"filesWritten":1,"testRuns":1,"testPasses":1}

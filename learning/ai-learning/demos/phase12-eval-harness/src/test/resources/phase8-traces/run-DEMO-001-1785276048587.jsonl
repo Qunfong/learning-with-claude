@@ -1,0 +1,15 @@
+{"event":"step","ts":"2026-07-28T22:00:51.067686100Z","step":"planning","tokensIn":476,"tokensOut":281,"latencyMs":2188,"cumulativeTokens":757,"stepCostUsd":0.0056}
+{"event":"gate_decision","ts":"2026-07-28T22:00:51.070720900Z","gate":"gate1","approved":true,"feedback":""}
+{"event":"step","ts":"2026-07-28T22:01:15.204451900Z","step":"coding","tokensIn":760,"tokensOut":560,"latencyMs":24051,"cumulativeTokens":2077,"stepCostUsd":0.0107}
+{"event":"file_written","ts":"2026-07-28T22:01:15.206042Z","path":"fixture/src/main/java/fixture/FixtureOllamaClient.java","chars":2491}
+{"event":"step","ts":"2026-07-28T22:01:26.369743500Z","step":"review","tokensIn":1609,"tokensOut":70,"latencyMs":11145,"cumulativeTokens":3756,"stepCostUsd":0.0059}
+{"event":"test_run","ts":"2026-07-28T22:01:28.521391700Z","passed":false,"durationMs":2147}
+{"event":"step","ts":"2026-07-28T22:01:52.401151500Z","step":"coding","tokensIn":1516,"tokensOut":560,"latencyMs":23875,"cumulativeTokens":5832,"stepCostUsd":0.0129}
+{"event":"file_written","ts":"2026-07-28T22:01:52.402663900Z","path":"fixture/src/main/java/fixture/FixtureOllamaClient.java","chars":2491}
+{"event":"step","ts":"2026-07-28T22:02:03.429683Z","step":"review","tokensIn":1609,"tokensOut":52,"latencyMs":11024,"cumulativeTokens":7493,"stepCostUsd":0.0056}
+{"event":"test_run","ts":"2026-07-28T22:02:05.546121Z","passed":false,"durationMs":2115}
+{"event":"step","ts":"2026-07-28T22:02:29.535243200Z","step":"coding","tokensIn":1516,"tokensOut":560,"latencyMs":23985,"cumulativeTokens":9569,"stepCostUsd":0.0129}
+{"event":"file_written","ts":"2026-07-28T22:02:29.536788200Z","path":"fixture/src/main/java/fixture/FixtureOllamaClient.java","chars":2491}
+{"event":"step","ts":"2026-07-28T22:02:40.156469300Z","step":"review","tokensIn":1609,"tokensOut":62,"latencyMs":10618,"cumulativeTokens":11240,"stepCostUsd":0.0058}
+{"event":"test_run","ts":"2026-07-28T22:02:42.320012100Z","passed":false,"durationMs":2162}
+{"event":"run_summary","ts":"2026-07-28T22:02:42.323032700Z","outcome":"escalated (3_consecutive_test_failures)","durationMs":113466,"steps":7,"tokensIn":9095,"tokensOut":2145,"costUsd":0.0595,"filesWritten":3,"testRuns":3,"testPasses":0}

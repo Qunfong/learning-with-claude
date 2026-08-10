@@ -68,9 +68,50 @@
 - **Build:** autonomous pipeline — ticket in → agent plans → codes → tests → opens PR, pausing for approval at defined gates
 - **Slide:** "Autonomous system with control points"
 
-## Phase 9 — Capstone
-- Combine everything: local+hosted model routing, RAG over your codebase, custom skill, MCP-exposed tools, multi-agent A2A, autonomy with human gates
-- Final deck: full architecture diagram + demo
+---
+
+Phases 9-14 close six concrete gaps found by benchmarking `phase0-8` against
+AWS's 14-module "Build AI agents with AWS" course — see
+`learning/ai-learning-gap-review/NOTES.md` for the full comparison. Each
+phase closes exactly one gap.
+
+## Phase 9 — Agent Identity & IAM (Gap 1)
+- Principal chains (EndUser → Orchestrator → Specialized Agent), scoped + time-bounded credentials, delegation vs. impersonation
+- Credentials never enter the model's context window; out-of-band attachment; append-only audit trail
+- **Build:** credential broker + guarded tool invoker modeling AWS STS AssumeRole chains, four demo scenarios (expiry, scope escalation, delegation vs impersonation, prompt-injection credential theft)
+- **Slide:** "Principal chain & blast radius: delegation vs impersonation"
+
+## Phase 10 — Framework & Protocol Standards (Gap 3)
+- Real A2A agent-card discovery over HTTP (trusted-origin allowlisting, malformed/unreachable/untrusted-origin handling)
+- x402 payment-required/retry flow (Coinbase's HTTP agent-payment protocol shape)
+- **Build:** embedded HTTP agent-card servers + a runtime capability registry built by live discovery; a mock 402-pause-retry pipeline
+- **Slide:** "Agent card discovery vs compile-time wiring"
+
+## Phase 11 — Resilient Multi-Agent Pipeline (Gap 4)
+- Circuit breakers (failure-streak, not single-call retry), schema-validated handoffs, confidence scoring & abstention
+- **Build:** Planner → Coder → Reviewer pipeline where every handoff passes a hand-rolled JSON-schema gate, each hop wrapped in its own circuit breaker, low-confidence results trigger abstention instead of silent pass-through
+- **Slide:** "Schema gate + confidence gate + circuit breaker, one pipeline"
+
+## Phase 12 — Agent Evaluation Harness (Gap 2)
+- AWS's three-layer framework: task-level correctness, trajectory quality, system-level health
+- Golden / regression / adversarial dataset types, LLM-as-judge (scaffolded)
+- **Build:** a Java eval library driven by real trace fixtures from Phase 4 and Phase 8, with a CI-gate-worthy composite score
+- **Slide:** "Three eval layers, one composite score"
+
+## Phase 13 — Memory: ANN Index, Hybrid Search & Graph Memory (Gap 5)
+- Hand-rolled HNSW-lite ANN index vs. brute-force scan, BM25+vector hybrid search with RRF, cross-encoder-style re-rank, Graph RAG
+- **Build:** benchmark harness comparing brute-force vs ANN comparison counts at increasing scale; a ranked/bounded/decayed memory store next to the old unranked one
+- **Slide:** "Brute force vs ANN: comparisons don't grow linearly"
+
+## Phase 14 — Domain Specialization (Gap 7)
+- AWS's four levers: system prompt, knowledge corpus, tool selection, guardrails — applied to one vertical (customer support)
+- **Build:** domain agent vs. baseline agent run side-by-side on four scenarios, same model/tools, only the four levers differ
+- **Slide:** "Four levers, one baseline comparison"
+
+## Phase 15 — Capstone
+- Combine the throughline across all 15 phases: scoped credentials → agent loop → tool calling → schema-validated multi-agent handoff with confidence scoring → memory retrieval → eval/judge scoring
+- **Build:** a combined demo chaining a representative slice of the curriculum in one run, plus a generated slide deck (`SlideDeckGenerator` → `SLIDES.md`) synthesizing every phase's key concept and technique diagram
+- **Slide:** the generated deck itself is the final artifact — one Mermaid diagram per phase, closing with the combined architecture
 
 ---
 

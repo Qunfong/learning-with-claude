@@ -1,0 +1,10 @@
+{"event":"step","ts":"2026-07-28T22:04:31.609831800Z","step":"planning","tokensIn":515,"tokensOut":297,"latencyMs":2359,"cumulativeTokens":812,"stepCostUsd":0.006}
+{"event":"gate_decision","ts":"2026-07-28T22:04:31.614443500Z","gate":"gate1","approved":false,"feedback":"please use a while-loop retry helper instead, and mention units in the log message"}
+{"event":"step","ts":"2026-07-28T22:04:33.467130600Z","step":"planning","tokensIn":549,"tokensOut":294,"latencyMs":1851,"cumulativeTokens":1655,"stepCostUsd":0.0061}
+{"event":"gate_decision","ts":"2026-07-28T22:04:33.468693300Z","gate":"gate1","approved":true,"feedback":""}
+{"event":"step","ts":"2026-07-28T22:04:56.615153800Z","step":"coding","tokensIn":841,"tokensOut":449,"latencyMs":23112,"cumulativeTokens":2945,"stepCostUsd":0.0093}
+{"event":"file_written","ts":"2026-07-28T22:04:56.616194200Z","path":"fixture/src/main/java/fixture/FixtureOllamaClient.java","chars":1972}
+{"event":"step","ts":"2026-07-28T22:05:07.173809300Z","step":"review","tokensIn":1506,"tokensOut":89,"latencyMs":10554,"cumulativeTokens":4540,"stepCostUsd":0.0059}
+{"event":"test_run","ts":"2026-07-28T22:05:11.622122400Z","passed":true,"durationMs":4436}
+{"event":"gate_decision","ts":"2026-07-28T22:05:11.625150700Z","gate":"gate2","approved":true,"feedback":""}
+{"event":"run_summary","ts":"2026-07-28T22:05:11.889681900Z","outcome":"pr-simulated","durationMs":42662,"steps":4,"tokensIn":3411,"tokensOut":1129,"costUsd":0.0272,"filesWritten":1,"testRuns":1,"testPasses":1}

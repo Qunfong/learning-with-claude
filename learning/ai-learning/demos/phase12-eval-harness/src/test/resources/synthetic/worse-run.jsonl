@@ -1,0 +1,15 @@
+{"event":"step","ts":"2026-08-01T12:00:00.000000000Z","step":"planning","tokensIn":600,"tokensOut":300,"latencyMs":2400,"cumulativeTokens":900,"stepCostUsd":0.0063,"confidence":0.5}
+{"event":"gate_decision","ts":"2026-08-01T12:00:00.100000000Z","gate":"gate1","approved":true,"feedback":""}
+{"event":"step","ts":"2026-08-01T12:00:24.000000000Z","step":"coding","tokensIn":900,"tokensOut":600,"latencyMs":25000,"cumulativeTokens":2400,"stepCostUsd":0.0117,"confidence":0.35}
+{"event":"file_written","ts":"2026-08-01T12:00:24.100000000Z","path":"fixture/src/main/java/fixture/FixtureOllamaClient.java","chars":2400}
+{"event":"step","ts":"2026-08-01T12:00:36.000000000Z","step":"review","tokensIn":1600,"tokensOut":80,"latencyMs":11000,"cumulativeTokens":4080,"stepCostUsd":0.006,"confidence":0.4}
+{"event":"test_run","ts":"2026-08-01T12:00:41.000000000Z","passed":false,"durationMs":5000}
+{"event":"step","ts":"2026-08-01T12:01:06.000000000Z","step":"coding","tokensIn":1700,"tokensOut":600,"latencyMs":25500,"cumulativeTokens":6380,"stepCostUsd":0.0141,"confidence":0.3}
+{"event":"file_written","ts":"2026-08-01T12:01:06.100000000Z","path":"fixture/src/main/java/fixture/FixtureOllamaClient.java","chars":2450}
+{"event":"step","ts":"2026-08-01T12:01:18.000000000Z","step":"review","tokensIn":1600,"tokensOut":70,"latencyMs":10800,"cumulativeTokens":8050,"stepCostUsd":0.0058,"confidence":0.35}
+{"event":"test_run","ts":"2026-08-01T12:01:23.000000000Z","passed":false,"durationMs":5000}
+{"event":"step","ts":"2026-08-01T12:01:48.000000000Z","step":"coding","tokensIn":1700,"tokensOut":600,"latencyMs":25900,"cumulativeTokens":10350,"stepCostUsd":0.0141,"confidence":0.25}
+{"event":"file_written","ts":"2026-08-01T12:01:48.100000000Z","path":"fixture/src/main/java/fixture/FixtureOllamaClient.java","chars":2480}
+{"event":"step","ts":"2026-08-01T12:02:00.000000000Z","step":"review","tokensIn":1600,"tokensOut":65,"latencyMs":10200,"cumulativeTokens":12015,"stepCostUsd":0.0057,"confidence":0.3}
+{"event":"test_run","ts":"2026-08-01T12:02:05.000000000Z","passed":false,"durationMs":5000}
+{"event":"run_summary","ts":"2026-08-01T12:02:05.100000000Z","outcome":"escalated (3_consecutive_test_failures)","durationMs":125100,"steps":7,"tokensIn":9700,"tokensOut":2315,"costUsd":0.0637,"filesWritten":3,"testRuns":3,"testPasses":0}
