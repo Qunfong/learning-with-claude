@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880.0 260.0" width="880.0" height="260.0" role="img" aria-label="Text is tokenized to ids, the model turns ids into logits over the whole vocabulary, sampling collapses that distribution to one token, and the token is appended and fed back in.">
+  <title>Text is tokenized to ids, the model turns ids into logits over the whole vocabulary, sampling collapses that distribution to one token, and the token is appended and fed back in.</title>
+  <rect x="31.0" y="35.0" width="58.1" height="38.0" rx="6.0" fill="#e9f5ef" stroke="#147a4a" stroke-width="1.6"/>
+  <text x="60.0" y="58.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">text</text>
+  <rect x="127.1" y="35.0" width="125.8" height="38.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="190.0" y="58.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">BPE tokenizer</text>
+  <rect x="292.2" y="35.0" width="95.7" height="38.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="340.0" y="58.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">token ids</text>
+  <rect x="428.3" y="35.0" width="163.4" height="38.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="510.0" y="58.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">model forward pass</text>
+  <rect x="633.3" y="35.0" width="193.4" height="38.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="730.0" y="58.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">logits over vocabulary</text>
+  <rect x="622.0" y="173.0" width="216.0" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="730.0" y="196.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">sampling:</text>
+  <text x="730.0" y="212.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">temperature, top-p, top-k</text>
+  <rect x="348.4" y="181.0" width="103.2" height="38.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="400.0" y="204.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">next token</text>
+  <line x1="89.0" y1="54.0" x2="117.6" y2="54.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="127.1,54.0 117.6,58.6 117.6,49.4" fill="#6f7570"/>
+  <line x1="252.9" y1="54.0" x2="282.7" y2="54.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="292.2,54.0 282.7,58.6 282.7,49.4" fill="#6f7570"/>
+  <line x1="387.8" y1="54.0" x2="418.8" y2="54.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="428.3,54.0 418.8,58.6 418.8,49.4" fill="#6f7570"/>
+  <line x1="591.7" y1="54.0" x2="623.8" y2="54.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="633.3,54.0 623.8,58.6 623.8,49.4" fill="#6f7570"/>
+  <line x1="730.0" y1="73.0" x2="730.0" y2="163.5" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="730.0,173.0 725.4,163.5 734.6,163.5" fill="#6f7570"/>
+  <line x1="622.0" y1="200.0" x2="461.1" y2="200.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="451.6,200.0 461.1,195.4 461.1,204.6" fill="#6f7570"/>
+  <line x1="400.0" y1="181.0" x2="400.0" y2="120.0" stroke="#6f7570" stroke-width="1.5"/>
+  <line x1="400.0" y1="120.0" x2="340.0" y2="120.0" stroke="#6f7570" stroke-width="1.5"/>
+  <line x1="340.0" y1="120.0" x2="340.0" y2="82.5" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="340.0,73.0 344.6,82.5 335.4,82.5" fill="#6f7570"/>
+  <rect x="299.1" y="107.0" width="141.8" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="370.0" y="124.0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">next token appended</text>
+</svg>

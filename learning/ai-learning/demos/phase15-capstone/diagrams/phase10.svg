@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 910.0 400.0" width="910.0" height="400.0" role="img" aria-label="The trusted-origin check runs before any request is sent; only then is the agent card fetched, registered as a runtime capability, and paid for over x402.">
+  <title>The trusted-origin check runs before any request is sent; only then is the agent card fetched, registered as a runtime capability, and paid for over x402.</title>
+  <rect x="32.1" y="161.0" width="155.8" height="38.0" rx="6.0" fill="#e9f5ef" stroke="#147a4a" stroke-width="1.6"/>
+  <text x="110.0" y="184.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">OrchestratorAgent</text>
+  <polygon points="300.0,126.4 373.9,180.0 300.0,233.6 226.1,180.0" fill="#fdf3e6" stroke="#a8630a" stroke-width="1.6" stroke-linejoin="round"/>
+  <text x="300.0" y="176.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">origin in</text>
+  <text x="300.0" y="192.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">allowlist?</text>
+  <rect x="240.9" y="21.0" width="118.2" height="54.0" rx="6.0" fill="#fbeeeb" stroke="#b7412f" stroke-width="1.6"/>
+  <text x="300.0" y="44.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">skip, no</text>
+  <text x="300.0" y="60.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">request sent</text>
+  <rect x="442.1" y="153.0" width="155.8" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="520.0" y="176.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">GET /.well-known/</text>
+  <text x="520.0" y="192.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">agent-card.json</text>
+  <rect x="673.3" y="153.0" width="193.4" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="770.0" y="176.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">AgentCard: name,</text>
+  <text x="770.0" y="192.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">capabilities, endpoint</text>
+  <rect x="688.3" y="303.0" width="163.4" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="770.0" y="326.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">runtime capability</text>
+  <text x="770.0" y="342.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">registry</text>
+  <rect x="357.0" y="303.0" width="185.9" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="450.0" y="326.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">x402: 402 due,</text>
+  <text x="450.0" y="342.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">authorize, retry once</text>
+  <line x1="187.9" y1="180.0" x2="216.6" y2="180.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="226.1,180.0 216.6,184.6 216.6,175.4" fill="#6f7570"/>
+  <line x1="300.0" y1="126.4" x2="300.0" y2="84.5" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="300.0,75.0 304.6,84.5 295.4,84.5" fill="#6f7570"/>
+  <rect x="285.4" y="87.7" width="29.2" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="300.0" y="104.7" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">no</text>
+  <line x1="373.9" y1="180.0" x2="432.6" y2="180.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="442.1,180.0 432.6,184.6 432.6,175.4" fill="#6f7570"/>
+  <rect x="390.1" y="167.0" width="35.9" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="408.0" y="184.0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">yes</text>
+  <line x1="597.9" y1="180.0" x2="663.8" y2="180.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="673.3,180.0 663.8,184.6 663.8,175.4" fill="#6f7570"/>
+  <rect x="607.7" y="167.0" width="55.7" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="635.6" y="184.0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">200 OK</text>
+  <line x1="770.0" y1="207.0" x2="770.0" y2="293.5" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="770.0,303.0 765.4,293.5 774.6,293.5" fill="#6f7570"/>
+  <rect x="728.9" y="242.0" width="82.2" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="770.0" y="259.0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">registered</text>
+  <line x1="688.3" y1="330.0" x2="552.5" y2="330.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="543.0,330.0 552.5,325.4 552.5,334.6" fill="#6f7570"/>
+  <rect x="584.5" y="317.0" width="62.3" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="615.6" y="334.0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">call it</text>
+</svg>

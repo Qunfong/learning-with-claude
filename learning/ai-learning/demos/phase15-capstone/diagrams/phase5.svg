@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920.0 400.0" width="920.0" height="400.0" role="img" aria-label="A skill and RAG both arrive through the context window and can be swapped per call; fine-tuning bypasses the context entirely because it is already in the weights.">
+  <title>A skill and RAG both arrive through the context window and can be swapped per call; fine-tuning bypasses the context entirely because it is already in the weights.</title>
+  <rect x="40.0" y="43.0" width="210.0" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="145.0" y="66.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">skill folder:</text>
+  <text x="145.0" y="82.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">instructions + resources</text>
+  <rect x="345.8" y="51.0" width="148.3" height="38.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="420.0" y="74.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">loaded on demand</text>
+  <rect x="40.0" y="173.0" width="210.0" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="145.0" y="196.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">RAG:</text>
+  <text x="145.0" y="212.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">retrieved facts</text>
+  <rect x="563.4" y="116.0" width="133.3" height="38.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="630.0" y="139.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">context window</text>
+  <rect x="40.0" y="303.0" width="210.0" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="145.0" y="326.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">fine-tuning:</text>
+  <text x="145.0" y="342.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">baked into weights</text>
+  <rect x="797.2" y="181.0" width="65.6" height="38.0" rx="6.0" fill="#e9f5ef" stroke="#147a4a" stroke-width="1.6"/>
+  <text x="830.0" y="204.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">agent</text>
+  <rect x="763.4" y="303.0" width="133.3" height="54.0" rx="6.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.4"/>
+  <text x="830.0" y="326.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">output follows</text>
+  <text x="830.0" y="342.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#1c1f1c">house style</text>
+  <line x1="250.0" y1="70.0" x2="336.3" y2="70.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="345.8,70.0 336.3,74.6 336.3,65.4" fill="#6f7570"/>
+  <rect x="260.1" y="57.0" width="75.6" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="297.9" y="74.0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">on demand</text>
+  <line x1="494.2" y1="70.0" x2="556.0" y2="121.3" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="563.4,127.4 553.1,124.9 559.0,117.8" fill="#6f7570"/>
+  <line x1="250.0" y1="200.0" x2="554.0" y2="144.3" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="563.4,142.6 554.8,148.8 553.2,139.8" fill="#6f7570"/>
+  <rect x="328.0" y="158.0" width="121.9" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="389.0" y="175.0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">facts, per query</text>
+  <line x1="696.6" y1="135.0" x2="788.9" y2="187.7" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="797.2,192.4 786.7,191.7 791.2,183.7" fill="#6f7570"/>
+  <line x1="250.0" y1="330.0" x2="740.0" y2="330.0" stroke="#6f7570" stroke-width="1.5"/>
+  <line x1="740.0" y1="330.0" x2="740.0" y2="200.0" stroke="#6f7570" stroke-width="1.5"/>
+  <line x1="740.0" y1="200.0" x2="787.7" y2="200.0" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="797.2,200.0 787.7,204.6 787.7,195.4" fill="#6f7570"/>
+  <rect x="419.0" y="317.0" width="121.9" height="26.0" rx="3.0" fill="#fffdf9" stroke="#ddd8cd" stroke-width="1.0"/>
+  <text x="480.0" y="334.0" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.0" fill="#565f5a">never in context</text>
+  <line x1="830.0" y1="219.0" x2="830.0" y2="293.5" stroke="#6f7570" stroke-width="1.5"/>
+  <polygon points="830.0,303.0 825.4,293.5 834.6,293.5" fill="#6f7570"/>
+</svg>
