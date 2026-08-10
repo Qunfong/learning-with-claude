@@ -261,6 +261,17 @@
   details.disclosure .rail{ margin-top:0; border-top:none; border-top-left-radius:0; border-top-right-radius:0; }
   details.disclosure .card-grid{ margin-top:14px; }
 
+  /* changelog "earlier changes" toggle: lighter, sits inline in the timeline */
+  details.disclosure.log-older{ margin-top:2px; }
+  details.disclosure.log-older summary{
+    padding:7px 14px; font-size:12px; font-weight:500;
+    background:transparent; border:1px dashed var(--line); color:var(--fg-mute);
+  }
+  details.disclosure.log-older summary:hover{ color:var(--fg); border-color:var(--green-dim); }
+  details.disclosure.log-older[open] summary{ margin-bottom:16px; border-style:solid; }
+  .log-nested{ padding-left:26px; margin-top:0; }
+  .log-nested::before{ display:none; } /* outer .log::before line already runs the full height */
+
   /* ── resources ── */
   .res-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
   @media (max-width:820px){ .res-grid{ grid-template-columns:1fr; } }
@@ -406,53 +417,9 @@
 
     <div class="log">
       <div class="log-entry">
-        <div class="log-date">2026-04-02</div>
-        <div class="log-title">OAuth 2.0 authorization — auth code + PKCE, JWT (RS256), bearer middleware, client registry, token introspection</div>
-        <div class="log-tags"><span>PKCE</span><span>JWT vs opaque</span><span>RS256</span><span>JWKS</span><span>Spring Security</span></div>
-        <div class="log-spec"><a href="https://github.com/Qunfong/learning-with-claude/blob/main/hobby-projects/auth-server/openspec/changes/add-authentication-oauth-2/proposal.md">openspec/add-authentication-oauth-2 →</a></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">2026-04-03</div>
-        <div class="log-title">Flight price search — GET /flights/search via Duffel API, cheapest-first sorting, configurable route &amp; range</div>
-        <div class="log-tags"><span>RestClient</span><span>OAuth client-credentials</span><span>token caching</span><span>layered architecture</span></div>
-        <div class="log-spec"><a href="https://github.com/Qunfong/learning-with-claude/blob/main/hobby-projects/auth-server/openspec/changes/flight-price-search/proposal.md">openspec/flight-price-search →</a></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">2026-04-06</div>
-        <div class="log-title">Book scanner — OCR pipeline, Kafka event streaming, Open Library enrichment, SSE, Angular frontend, Docker Compose</div>
-        <div class="log-tags"><span>Kafka</span><span>event-driven</span><span>SSE vs WebSockets</span><span>Docker health checks</span></div>
-        <div class="log-spec"><a href="https://github.com/Qunfong/learning-with-claude/blob/main/hobby-projects/book-scanner/openspec/changes/book-scanner-library/proposal.md">openspec/book-scanner-library →</a></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">2026-04-06</div>
-        <div class="log-title">GitHub Actions CI — three jobs, artifact upload, JWT secrets, Dependabot for automated dependency updates</div>
-        <div class="log-tags"><span>Actions jobs/steps</span><span>Maven --batch-mode</span><span>setup-java/Temurin</span><span>Dependabot</span></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">2026-04-06</div>
-        <div class="log-title">Upgraded to Spring Boot 4 across both services — milestone repo in CI, Java 21/25, Maven toolchains</div>
-        <div class="log-tags"><span>module split</span><span>milestone repos</span><span>settings.xml / toolchains.xml</span></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">2026-04-06</div>
-        <div class="log-title">CI fix — migrated to Spring Boot 4 test API (@MockitoBean, spring-boot-starter-webmvc-test)</div>
-        <div class="log-tags"><span>test modularization</span><span>@MockitoBean</span><span>read the migration guide</span></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">2026-04-06</div>
-        <div class="log-title">Book scanner — added Playwright e2e tests (library + book-detail), translated remaining Dutch backend logs to English</div>
-        <div class="log-tags"><span>Playwright fixtures/specs</span><span>working-language consistency</span></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">2026-08-06</div>
-        <div class="log-title">Repo restructure — split into hobby-projects/ and learning/, each project's openspec kept local to it</div>
-        <div class="log-tags"><span>monorepo layout</span><span>CI path updates</span><span>separation of concerns</span></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">2026-08-06</div>
-        <div class="log-title">Added this GitHub Pages landing page — terminal-styled overview of hobby-projects/, learning/, changelog, resources</div>
-        <div class="log-tags"><span>static site via docs/</span><span>no build step</span></div>
-        <div class="log-spec"><a href="https://qunfong.github.io/learning-with-claude/">site →</a></div>
+        <div class="log-date">2026-08-10</div>
+        <div class="log-title">Translated phase0-8 curriculum docs from Dutch to English, redesigned phase15's slide-deck diagrams as hand-laid-out SVGs, retired the stale top-level slides.md</div>
+        <div class="log-tags"><span>keep captured output verbatim, gloss it</span><span>generated &gt; hand-maintained</span></div>
       </div>
       <div class="log-entry">
         <div class="log-date">2026-08-10</div>
@@ -461,10 +428,60 @@
         <div class="log-spec"><a href="https://github.com/Qunfong/learning-with-claude/blob/main/learning/ai-learning-gap-review/NOTES.md">gap review →</a></div>
       </div>
       <div class="log-entry">
-        <div class="log-date">2026-08-10</div>
-        <div class="log-title">Translated phase0-8 curriculum docs from Dutch to English, redesigned phase15's slide-deck diagrams as hand-laid-out SVGs, retired the stale top-level slides.md</div>
-        <div class="log-tags"><span>keep captured output verbatim, gloss it</span><span>generated &gt; hand-maintained</span></div>
+        <div class="log-date">2026-08-06</div>
+        <div class="log-title">Added this GitHub Pages landing page — terminal-styled overview of hobby-projects/, learning/, changelog, resources</div>
+        <div class="log-tags"><span>static site via docs/</span><span>no build step</span></div>
+        <div class="log-spec"><a href="https://qunfong.github.io/learning-with-claude/">site →</a></div>
       </div>
+      <div class="log-entry">
+        <div class="log-date">2026-08-06</div>
+        <div class="log-title">Repo restructure — split into hobby-projects/ and learning/, each project's openspec kept local to it</div>
+        <div class="log-tags"><span>monorepo layout</span><span>CI path updates</span><span>separation of concerns</span></div>
+      </div>
+
+      <details class="disclosure log-older">
+        <summary>earlier changes <span class="count">7 more</span></summary>
+        <div class="log log-nested">
+          <div class="log-entry">
+            <div class="log-date">2026-04-06</div>
+            <div class="log-title">Book scanner — added Playwright e2e tests (library + book-detail), translated remaining Dutch backend logs to English</div>
+            <div class="log-tags"><span>Playwright fixtures/specs</span><span>working-language consistency</span></div>
+          </div>
+          <div class="log-entry">
+            <div class="log-date">2026-04-06</div>
+            <div class="log-title">CI fix — migrated to Spring Boot 4 test API (@MockitoBean, spring-boot-starter-webmvc-test)</div>
+            <div class="log-tags"><span>test modularization</span><span>@MockitoBean</span><span>read the migration guide</span></div>
+          </div>
+          <div class="log-entry">
+            <div class="log-date">2026-04-06</div>
+            <div class="log-title">Upgraded to Spring Boot 4 across both services — milestone repo in CI, Java 21/25, Maven toolchains</div>
+            <div class="log-tags"><span>module split</span><span>milestone repos</span><span>settings.xml / toolchains.xml</span></div>
+          </div>
+          <div class="log-entry">
+            <div class="log-date">2026-04-06</div>
+            <div class="log-title">GitHub Actions CI — three jobs, artifact upload, JWT secrets, Dependabot for automated dependency updates</div>
+            <div class="log-tags"><span>Actions jobs/steps</span><span>Maven --batch-mode</span><span>setup-java/Temurin</span><span>Dependabot</span></div>
+          </div>
+          <div class="log-entry">
+            <div class="log-date">2026-04-06</div>
+            <div class="log-title">Book scanner — OCR pipeline, Kafka event streaming, Open Library enrichment, SSE, Angular frontend, Docker Compose</div>
+            <div class="log-tags"><span>Kafka</span><span>event-driven</span><span>SSE vs WebSockets</span><span>Docker health checks</span></div>
+            <div class="log-spec"><a href="https://github.com/Qunfong/learning-with-claude/blob/main/hobby-projects/book-scanner/openspec/changes/book-scanner-library/proposal.md">openspec/book-scanner-library →</a></div>
+          </div>
+          <div class="log-entry">
+            <div class="log-date">2026-04-03</div>
+            <div class="log-title">Flight price search — GET /flights/search via Duffel API, cheapest-first sorting, configurable route &amp; range</div>
+            <div class="log-tags"><span>RestClient</span><span>OAuth client-credentials</span><span>token caching</span><span>layered architecture</span></div>
+            <div class="log-spec"><a href="https://github.com/Qunfong/learning-with-claude/blob/main/hobby-projects/auth-server/openspec/changes/flight-price-search/proposal.md">openspec/flight-price-search →</a></div>
+          </div>
+          <div class="log-entry">
+            <div class="log-date">2026-04-02</div>
+            <div class="log-title">OAuth 2.0 authorization — auth code + PKCE, JWT (RS256), bearer middleware, client registry, token introspection</div>
+            <div class="log-tags"><span>PKCE</span><span>JWT vs opaque</span><span>RS256</span><span>JWKS</span><span>Spring Security</span></div>
+            <div class="log-spec"><a href="https://github.com/Qunfong/learning-with-claude/blob/main/hobby-projects/auth-server/openspec/changes/add-authentication-oauth-2/proposal.md">openspec/add-authentication-oauth-2 →</a></div>
+          </div>
+        </div>
+      </details>
     </div>
   </div>
 </section>
